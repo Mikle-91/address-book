@@ -48,46 +48,12 @@ class AppDynamicsJob(unittest.TestCase):
         driver.find_element_by_name("pass").clear()
         driver.find_element_by_name("pass").send_keys("secret")
         driver.find_element_by_id("LoginForm").submit()
-        driver.find_element_by_link_text("groups").click()
-        driver.find_element_by_name("new").click()
-        driver.find_element_by_name("group_name").click()
-        driver.find_element_by_name("group_name").clear()
-        driver.find_element_by_name("group_name").send_keys("qwe")
-        driver.find_element_by_name("group_header").click()
-        driver.find_element_by_name("group_header").clear()
-        driver.find_element_by_name("group_header").send_keys("qwe")
-        driver.find_element_by_name("group_footer").click()
-        driver.find_element_by_name("group_footer").clear()
-        driver.find_element_by_name("group_footer").send_keys("qwe")
-        driver.find_element_by_name("submit").click()
-        driver.find_element_by_link_text("groups").click()
-        driver.find_element_by_link_text("Logout").click()
-    
-    # def is_element_present(self, how, what):
-    #     try: self.driver.find_element(by=how, value=what)
-    #     except NoSuchElementException as e: return False
-    #     return True
-    #
-    # def is_alert_present(self):
-    #     try: self.driver.switch_to_alert()
-    #     except NoAlertPresentException as e: return False
-    #     return True
-    #
-    # def close_alert_and_get_its_text(self):
-    #     try:
-    #         alert = self.driver.switch_to_alert()
-    #         alert_text = alert.text
-    #         if self.accept_next_alert:
-    #             alert.accept()
-    #         else:
-    #             alert.dismiss()
-    #         return alert_text
-    #     finally: self.accept_next_alert = True
-    #
-    # def tearDown(self):
-    #     # To know more about the difference between verify and assert,
-    #     # visit https://www.seleniumhq.org/docs/06_test_design_considerations.jsp#validating-results
-    #     self.assertEqual([], self.verificationErrors)
+
+    def open_home_page(self, driver):
+        driver.get("http://localhost/addressbook/")
+
+    def tearDown(self):
+        self.driver.quit() # закрытие браузера
 
 if __name__ == "__main__":
     unittest.main()
