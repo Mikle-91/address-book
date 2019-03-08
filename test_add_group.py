@@ -1,6 +1,7 @@
 # # -*- coding: utf-8 -*-
 from selenium.webdriver.firefox.webdriver import WebDriver
 import time, unittest
+from group import Group
 
 class AppDynamicsJob(unittest.TestCase):
     def setUp(self):
@@ -15,25 +16,26 @@ class AppDynamicsJob(unittest.TestCase):
         self.open_home_page(driver)
         self.login(driver, username="admin", password="secret")
         self.open_groups_page(driver)
-        self.create_new_groupe(driver, name="987", header="headqwe", footer="footasd")
+        self.create_new_groupe(driver, Group(name="uyt", header="headqwe", footer="footasd"))
         self.logout(driver)
 
     def logout(self, driver):
         driver.find_element_by_link_text("groups").click()
         driver.find_element_by_link_text("Logout").click()
 
-    def create_new_groupe(self, driver, name, header, footer):
+    def create_new_groupe(self, driver, group):
         # init groupe creation
         driver.find_element_by_name("new").click()
         # fill group form
         driver.find_element_by_name("group_name").click()
         driver.find_element_by_name("group_name").clear()
-        driver.find_element_by_name("group_name").send_keys(name)
+        driver.find_element_by_name("group_name").send_keys(group.name)
+        driver.find_element_by_name("group_header").click()
         driver.find_element_by_name("group_header").clear()
-        driver.find_element_by_name("group_header").send_keys(header)
+        driver.find_element_by_name("group_header").send_keys(group.header)
         driver.find_element_by_name("group_footer").click()
         driver.find_element_by_name("group_footer").clear()
-        driver.find_element_by_name("group_footer").send_keys(footer)
+        driver.find_element_by_name("group_footer").send_keys(group.footer)
         # submit group
         driver.find_element_by_name("submit").click()
 
