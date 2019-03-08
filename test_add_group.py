@@ -12,17 +12,18 @@ class AppDynamicsJob(unittest.TestCase):
         self.accept_next_alert = True
     
     def test_app_dynamics_job(self):
-        driver = self.driver
-        self.login(driver, username="admin", password="secret")
-        self.create_new_groupe(driver, Group(name="uyt", header="headqwe", footer="footasd"))
-        self.logout(driver)
+        self.login(username="admin", password="secret")
+        self.create_new_groupe(Group(name="uyt", header="headqwe", footer="footasd"))
+        self.logout()
 
-    def logout(self, driver):
+    def logout(self):
+        driver = self.driver
         driver.find_element_by_link_text("groups").click()
         driver.find_element_by_link_text("Logout").click()
 
-    def create_new_groupe(self, driver, Group):
-        self.open_groups_page(driver)
+    def create_new_groupe(self, Group):
+        driver = self.driver
+        self.open_groups_page()
         # init groupe creation
         driver.find_element_by_name("new").click()
         # fill group form
@@ -38,11 +39,13 @@ class AppDynamicsJob(unittest.TestCase):
         # submit group
         driver.find_element_by_name("submit").click()
 
-    def open_groups_page(self, driver):
+    def open_groups_page(self):
+        driver = self.driver
         driver.find_element_by_link_text("groups").click()
 
-    def login(self, driver, username, password):
-        self.open_home_page(driver)
+    def login(self, username, password):
+        driver = self.driver
+        self.open_home_page()
         driver.find_element_by_name("user").click()
         driver.find_element_by_name("user").clear()
         driver.find_element_by_name("user").send_keys(username)
@@ -50,7 +53,8 @@ class AppDynamicsJob(unittest.TestCase):
         driver.find_element_by_name("pass").send_keys(password)
         driver.find_element_by_id("LoginForm").submit()
 
-    def open_home_page(self, driver):
+    def open_home_page(self):
+        driver = self.driver
         driver.get("http://localhost/addressbook/")
 
     def tearDown(self):
