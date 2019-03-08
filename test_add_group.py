@@ -53,7 +53,7 @@ class AppDynamicsJob(unittest.TestCase):
         driver.get("http://localhost/addressbook/")
 
     def tearDown(self):
-        self.driver.quit() # закрытие браузера
+        self.driver.quit() #закрытие браузера
 
 if __name__ == "__main__":
     unittest.main()

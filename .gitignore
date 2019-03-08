@@ -1,6 +1,7 @@
 #virtual envorinment
 env/
-idea/ *.xml 
+.idea/workspace.xml 
+.idea/
 __pycache__/
 
 geckodriver.log
@@ -10,3 +11,4 @@ geckodriver.log
 *.iml
 .idea
 out
+.idea/workspace.xml
