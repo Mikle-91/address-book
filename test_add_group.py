@@ -13,9 +13,7 @@ class AppDynamicsJob(unittest.TestCase):
     
     def test_app_dynamics_job(self):
         driver = self.driver
-        self.open_home_page(driver)
         self.login(driver, username="admin", password="secret")
-        self.open_groups_page(driver)
         self.create_new_groupe(driver, Group(name="uyt", header="headqwe", footer="footasd"))
         self.logout(driver)
 
@@ -23,19 +21,20 @@ class AppDynamicsJob(unittest.TestCase):
         driver.find_element_by_link_text("groups").click()
         driver.find_element_by_link_text("Logout").click()
 
-    def create_new_groupe(self, driver, group):
+    def create_new_groupe(self, driver, Group):
+        self.open_groups_page(driver)
         # init groupe creation
         driver.find_element_by_name("new").click()
         # fill group form
         driver.find_element_by_name("group_name").click()
         driver.find_element_by_name("group_name").clear()
-        driver.find_element_by_name("group_name").send_keys(group.name)
+        driver.find_element_by_name("group_name").send_keys(Group.name)
         driver.find_element_by_name("group_header").click()
         driver.find_element_by_name("group_header").clear()
-        driver.find_element_by_name("group_header").send_keys(group.header)
+        driver.find_element_by_name("group_header").send_keys(Group.header)
         driver.find_element_by_name("group_footer").click()
         driver.find_element_by_name("group_footer").clear()
-        driver.find_element_by_name("group_footer").send_keys(group.footer)
+        driver.find_element_by_name("group_footer").send_keys(Group.footer)
         # submit group
         driver.find_element_by_name("submit").click()
 
@@ -43,6 +42,7 @@ class AppDynamicsJob(unittest.TestCase):
         driver.find_element_by_link_text("groups").click()
 
     def login(self, driver, username, password):
+        self.open_home_page(driver)
         driver.find_element_by_name("user").click()
         driver.find_element_by_name("user").clear()
         driver.find_element_by_name("user").send_keys(username)
