@@ -2,7 +2,7 @@ test_add_group-pyapp.py
 
 #virtual envorinment
 env/
-idea/ *.xml 
+idea/
 __pycache__/
 
 geckodriver.log

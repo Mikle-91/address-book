@@ -1,32 +1,38 @@
 # # -*- coding: utf-8 -*-
+# from selenium import webdriver
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.common.keys import Keys
+# from selenium.webdriver.support.ui import Select
+# from selenium.common.exceptions import NoSuchElementException
+# from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+
 
 
 class AppDynamicsJob(unittest.TestCase):
     def setUp(self):
+        # AppDynamics will automatically override this web driver
+        # as documented in https://docs.appdynamics.com/display/PRO44/Write+Your+First+Script
         self.driver = WebDriver()
+        #self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
+        #self.base_url = "https://www.katalon.com/"
         self.base_url = "http://localhost/addressbook/"
         self.verificationErrors = []
         self.accept_next_alert = True
     
     def test_app_dynamics_job(self):
         driver = self.driver
-        self.open_home_page(driver)
-        self.login(driver)
-        self.open_groups_page(driver)
-        self.create_new_groupe(driver)
-        self.logout(driver)
-
-    def logout(self, driver):
-        driver.find_element_by_link_text("groups").click()
-        driver.find_element_by_link_text("Logout").click()
-
-    def create_new_groupe(self, driver):
-        # init groupe creation
+        driver.get("http://localhost/addressbook/group.php")
+        driver.find_element_by_name("user").click()
+        driver.find_element_by_name("user").clear()
+        driver.find_element_by_name("user").send_keys("admin")
+        driver.find_element_by_name("pass").clear()
+        driver.find_element_by_name("pass").send_keys("secret")
+        driver.find_element_by_id("LoginForm").submit()
         driver.find_element_by_name("new").click()
-        # fill group form
         driver.find_element_by_name("group_name").click()
         driver.find_element_by_name("group_name").clear()
         driver.find_element_by_name("group_name").send_keys("12")
@@ -35,13 +41,9 @@ class AppDynamicsJob(unittest.TestCase):
         driver.find_element_by_name("group_footer").click()
         driver.find_element_by_name("group_footer").clear()
         driver.find_element_by_name("group_footer").send_keys("12")
-        # submit group
         driver.find_element_by_name("submit").click()
-
-    def open_groups_page(self, driver):
         driver.find_element_by_link_text("groups").click()
-
-    def login(self, driver):
+        driver.find_element_by_link_text("Logout").click()
         driver.find_element_by_name("user").click()
         driver.find_element_by_name("user").clear()
         driver.find_element_by_name("user").send_keys("admin")

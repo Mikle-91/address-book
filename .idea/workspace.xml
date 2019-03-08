@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce50dee2-2e09-4e08-9bd8-3feb31bad1ff" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/loginlogoutpy2 пробую обрезать.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_add_group.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_add_group.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/common/seleniumtest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/address-book.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/address-book.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_add_group-pyapp.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_add_group-pyapp.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,12 +18,12 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test_add_group.py">
+        <entry file="file://$PROJECT_DIR$/test_add_group-pyapp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="22">
+              <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
               <folding>
-                <element signature="e#27#85#0" expanded="true" />
+                <element signature="e#335#393#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,7 +46,6 @@
       <find>refox.service.Servic</find>
       <find>time</find>
       <find>driver</find>
-      <find>logo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -55,34 +58,19 @@
         <option value="$PROJECT_DIR$/loginlogoutpy2 пробую обрезать.py" />
         <option value="$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/common/seleniumtest.py" />
         <option value="$PROJECT_DIR$/test_add_group-pyapp.py" />
-        <option value="$PROJECT_DIR$/test_add_group.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="857" />
-    <option name="y" value="-8" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-10" />
     <option name="width" value="978" />
-    <option name="height" value="459" />
+    <option name="height" value="1166" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="address-book" type="b2602c69:ProjectViewProjectNode" />
-              <item name="address-book" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
@@ -99,7 +87,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.pytest in test_add_group.py">
+  <component name="RunManager" selected="Python tests.pytest in test_add_group-pyapp.py">
     <configuration name="Unittests in loginlogoutpy2.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="address-book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -111,6 +99,20 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;$PROJECT_DIR$/loginlogoutpy2.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in loginlogoutpyapp.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="address-book" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/loginlogoutpyapp.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -158,28 +160,13 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in test_add_group.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="address-book" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_add_group.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest in test_add_group.py" />
-        <item itemvalue="Python tests.pytest in loginlogoutpy2 пробую обрезать.py" />
         <item itemvalue="Python tests.pytest in test_add_group-pyapp.py" />
         <item itemvalue="Python tests.Unittests in test_add_group-pyapp.py" />
+        <item itemvalue="Python tests.pytest in loginlogoutpy2 пробую обрезать.py" />
         <item itemvalue="Python tests.Unittests in loginlogoutpy2.py" />
+        <item itemvalue="Python tests.Unittests in loginlogoutpyapp.py" />
       </list>
     </recent_temporary>
   </component>
@@ -197,35 +184,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_in_test_add_group_py - 2019.03.08 at 18h 31m 35s.xml">
-      <configuration name="pytest in test_add_group.py" configurationId="tests" />
+    <history-entry file="pytest_in_loginlogoutpy2_пробую_обрезать_py - 2019.03.08 at 11h 15m 12s.xml">
+      <configuration name="pytest in loginlogoutpy2 пробую обрезать.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_add_group_py - 2019.03.08 at 18h 34m 59s.xml">
-      <configuration name="pytest in test_add_group.py" configurationId="tests" />
+    <history-entry file="pytest_in_loginlogoutpy2_пробую_обрезать_py - 2019.03.08 at 11h 16m 58s.xml">
+      <configuration name="pytest in loginlogoutpy2 пробую обрезать.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_add_group_py - 2019.03.08 at 18h 39m 19s.xml">
-      <configuration name="pytest in test_add_group.py" configurationId="tests" />
+    <history-entry file="pytest_in_loginlogoutpy2_пробую_обрезать_py - 2019.03.08 at 11h 20m 27s.xml">
+      <configuration name="pytest in loginlogoutpy2 пробую обрезать.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_add_group_py - 2019.03.08 at 18h 39m 56s.xml">
-      <configuration name="pytest in test_add_group.py" configurationId="tests" />
+    <history-entry file="pytest_in_loginlogoutpy2_пробую_обрезать_py - 2019.03.08 at 12h 03m 28s.xml">
+      <configuration name="pytest in loginlogoutpy2 пробую обрезать.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_add_group_py - 2019.03.08 at 18h 41m 10s.xml">
-      <configuration name="pytest in test_add_group.py" configurationId="tests" />
+    <history-entry file="pytest_in_loginlogoutpy2_пробую_обрезать_py - 2019.03.08 at 14h 37m 57s.xml">
+      <configuration name="pytest in loginlogoutpy2 пробую обрезать.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_add_group_py - 2019.03.08 at 18h 47m 38s.xml">
-      <configuration name="pytest in test_add_group.py" configurationId="tests" />
+    <history-entry file="pytest_in_loginlogoutpy2_пробую_обрезать_py - 2019.03.08 at 14h 49m 06s.xml">
+      <configuration name="pytest in loginlogoutpy2 пробую обрезать.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_add_group_py - 2019.03.08 at 18h 48m 24s.xml">
-      <configuration name="pytest in test_add_group.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_add_group-pyapp_py - 2019.03.08 at 14h 51m 45s.xml">
+      <configuration name="Unittests in test_add_group-pyapp.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_add_group_py - 2019.03.08 at 18h 51m 36s.xml">
-      <configuration name="pytest in test_add_group.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_add_group-pyapp_py - 2019.03.08 at 17h 19m 37s.xml">
+      <configuration name="Unittests in test_add_group-pyapp.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_add_group_py - 2019.03.08 at 18h 56m 01s.xml">
-      <configuration name="pytest in test_add_group.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_add_group-pyapp_py - 2019.03.08 at 17h 22m 09s.xml">
+      <configuration name="Unittests in test_add_group-pyapp.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_add_group_py - 2019.03.08 at 18h 56m 42s.xml">
-      <configuration name="pytest in test_add_group.py" configurationId="tests" />
+    <history-entry file="pytest_in_test_add_group-pyapp_py - 2019.03.08 at 17h 23m 11s.xml">
+      <configuration name="pytest in test_add_group-pyapp.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -233,7 +220,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.14967968" />
+      <window_info content_ui="combo" id="Project" order="1" weight="0.2498544" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
@@ -241,7 +228,7 @@
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
       <window_info anchor="bottom" id="Version Control" order="5" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.2244898" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.32760474" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -280,32 +267,19 @@
     <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/common/seleniumtest.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/loginlogoutpy2 пробую обрезать.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test_add_group-pyapp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
           <folding>
             <element signature="e#335#393#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginlogoutpy2 пробую обрезать.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
-          <folding>
-            <element signature="e#24#82#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_add_group.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#27#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
