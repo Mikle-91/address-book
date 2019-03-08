@@ -1,6 +1,14 @@
+test_add_group-pyapp.py
 
-test_add_group-pyapp.py
-test_add_group-pyapp.py
-test_add_group-pyapp.py
-test_add_group-pyapp.py
-test_add_group-pyapp.py
+#virtual envorinment
+env/
+idea/
+__pycache__/
+
+geckodriver.log
+.gitattributes
+
+# IntellijIdea files
+*.iml
+.idea
+out
