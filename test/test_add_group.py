@@ -12,6 +12,6 @@ def app(request):
 
 
 def test_app_dynamics_job(app):
-    app.login(username="admin", password="secret")
+    app.session.login(username="admin", password="secret")
     app.create_new_groupe(Group(name="uyt", header="headqwe", footer="footasd"))
-    app.logout()
+    app.session.logout()

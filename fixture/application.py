@@ -1,18 +1,16 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
+from fixture.session import SessionHelper
 
 class Application:
     def __init__(self):
         self.driver = WebDriver()
         self.driver.implicitly_wait(30)
-        self.base_url = "http://localhost/addressbook/"
-        self.verificationErrors = []
-        self.accept_next_alert = True
+        self.base_url = "http://localhost/addressbook/"  # удалить?
+        self.verificationErrors = []# удалить?
+        self.accept_next_alert = True   # удалить?
+        self.session =SessionHelper(self)
 
 
-    def logout(self):
-        driver = self.driver
-        driver.find_element_by_link_text("groups").click()
-        driver.find_element_by_link_text("Logout").click()
 
     def create_new_groupe(self, Group):
         driver = self.driver
@@ -36,15 +34,7 @@ class Application:
         driver = self.driver
         driver.find_element_by_link_text("groups").click()
 
-    def login(self, username, password):
-        driver = self.driver
-        self.open_home_page()
-        driver.find_element_by_name("user").click()
-        driver.find_element_by_name("user").clear()
-        driver.find_element_by_name("user").send_keys(username)
-        driver.find_element_by_name("pass").clear()
-        driver.find_element_by_name("pass").send_keys(password)
-        driver.find_element_by_id("LoginForm").submit()
+
 
     def open_home_page(self):
         driver = self.driver
