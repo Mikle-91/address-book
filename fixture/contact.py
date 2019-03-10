@@ -32,6 +32,11 @@ class ContactHelper:
         driver.find_element_by_name("nickname").clear()
         driver.find_element_by_name("nickname").send_keys(contact.nickname)
 
+        if contact.new_group is not None:
+            driver.find_element_by_name("photo").click()
+            driver.find_element_by_name("photo").clear()
+            driver.find_element_by_name("photo").send_keys("c://///pic.jpg")
+
         driver.find_element_by_name("title").click()
         driver.find_element_by_name("title").clear()
         driver.find_element_by_name("title").send_keys(contact.title)
@@ -86,10 +91,12 @@ class ContactHelper:
         driver.find_element_by_name("ayear").click()
         driver.find_element_by_name("ayear").send_keys(contact.ayear)
 
+
         # если не указан аргумент группы, то тест падает т.к. открывает селект лист
-        #driver.find_element_by_name("new_group").click()
-        #Select(driver.find_element_by_name("new_group")).select_by_visible_text(contact.new_group)
-        #driver.find_element_by_name("new_group").send_keys(contact.new_group)
+        if contact.new_group is not None:
+            driver.find_element_by_name("new_group").click()
+            Select(driver.find_element_by_name("new_group")).select_by_visible_text(contact.new_group)
+            driver.find_element_by_name("new_group").send_keys(contact.new_group)
 
         driver.find_element_by_name("address2").click()
         driver.find_element_by_name("address2").clear()
@@ -105,11 +112,46 @@ class ContactHelper:
         # submit contact
         driver.find_element_by_name("submit").click()
 
+
+
+    def select_first_contact(self):
+        driver = self.app.driver
+        driver.find_element_by_name("selected[]").click()
+
+    def modify_first_contact(self, new_contact_data):
+        driver = self.app.driver
+        self.open_home_page()
+        self.select_first_contact()
+        # open modification form
+        driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='john.daniels@'])[1]/following::img[2]").click()
+        # fill group form
+        self.fill_contact_form(new_contact_data)
+        # submit modification
+        driver.find_element_by_name("update").click()
+        self.open_home_page()
+
     def open_home_page(self):
         driver = self.app.driver
         driver.find_element_by_link_text("home").click()
 
-#### нахуевертил удаление элемента
+    def fill_contact_form(self, contact):
+        driver = self.app.driver
+        self.change_field_value("firstname", contact.firstname)
+        self.change_field_value("middlename", contact.middlename)
+        self.change_field_value("lastname", contact.lastname)
+
+
+    def change_field_value(self, field_name, text):
+        driver = self.app.driver
+        if text is not None:
+            driver.find_element_by_name(field_name).click()
+            driver.find_element_by_name(field_name).clear()
+            driver.find_element_by_name(field_name).send_keys(text)
+
+
+
+
+#### не работающее удаление элемента
     # def delete_first_contact(self):
     #     driver = self.app.driver
     #     self.open_home_page()
