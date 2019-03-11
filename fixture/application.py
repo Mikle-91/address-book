@@ -8,10 +8,7 @@ class Application:
 
     def __init__(self):
         self.driver = WebDriver()
-        self.driver.implicitly_wait(30)
-        self.base_url = "http://localhost/addressbook/"  # удалить?
-        self.verificationErrors = []# удалить?
-        self.accept_next_alert = True   # удалить?
+        self.driver.implicitly_wait(1)
         self.session =SessionHelper(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)

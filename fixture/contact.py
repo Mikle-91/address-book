@@ -92,7 +92,6 @@ class ContactHelper:
         driver.find_element_by_name("ayear").send_keys(contact.ayear)
 
 
-        # если не указан аргумент группы, то тест падает т.к. открывает селект лист
         if contact.new_group is not None:
             driver.find_element_by_name("new_group").click()
             Select(driver.find_element_by_name("new_group")).select_by_visible_text(contact.new_group)
@@ -123,8 +122,8 @@ class ContactHelper:
         self.open_home_page()
         self.select_first_contact()
         # open modification form
-        driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='john.daniels@'])[1]/following::img[2]").click()
-        # fill group form
+        driver.find_element_by_xpath("//img[contains(@title,'Edit')]").click()
+        # fill contact form
         self.fill_contact_form(new_contact_data)
         # submit modification
         driver.find_element_by_name("update").click()
@@ -132,7 +131,10 @@ class ContactHelper:
 
     def open_home_page(self):
         driver = self.app.driver
-        driver.find_element_by_link_text("home").click()
+        if not len(driver.find_elements_by_xpath("//a[contains(.,'All e-mail')]")) > 0:
+            driver.find_element_by_link_text("home").click()
+
+
 
     def fill_contact_form(self, contact):
         driver = self.app.driver
@@ -148,7 +150,10 @@ class ContactHelper:
             driver.find_element_by_name(field_name).clear()
             driver.find_element_by_name(field_name).send_keys(text)
 
-
+    def count(self):
+        driver = self.app.driver
+        self.open_home_page()
+        return len(driver.find_elements_by_name("selected[]"))
 
 
 #### не работающее удаление элемента
