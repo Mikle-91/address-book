@@ -1,6 +1,11 @@
 from model.group import Group
 
 def test_delete_first_group(app):
-    if app.group.count() ==0:
+    if app.group.count() ==0:           # проверка наличия групп перед удалением
         app.group.create(Group(name="test"))
+    old_groups = app.group.get_group_list()  #проверка удаления группы - берется состояние до внесения изменений
     app.group.delete_first_group()
+    new_groups = app.group.get_group_list()     #проверка удаления группы - берется состояние после внесения изменений
+    assert len(old_groups) - 1 == len(new_groups)   #проверка количесва групп после удаления
+
+
