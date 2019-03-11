@@ -11,6 +11,7 @@ class GroupHelper:
         self.open_groups_page()
         # init groupe creation
         driver.find_element_by_name("new").click()
+        #fill form
         self.fill_group_form(Group)
         # submit group
         driver.find_element_by_name("submit").click()
