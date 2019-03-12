@@ -1,6 +1,5 @@
-import time #чтобы не ломались тесты на авторазиции
-
 class SessionHelper:
+
 
     def __init__(self, app):
         self.app = app
@@ -8,7 +7,6 @@ class SessionHelper:
     def login(self, username, password):
         driver = self.app.driver
         self.app.open_home_page()
-        #time.sleep(3)
         driver.find_element_by_name("user").click()
         driver.find_element_by_name("user").clear()
         driver.find_element_by_name("user").send_keys(username)
@@ -20,3 +18,8 @@ class SessionHelper:
     def logout(self):
         driver = self.app.driver
         driver.find_element_by_link_text("Logout").click()
+
+    def get_logged_user(self):
+        driver = self.app.driver
+        return driver.find_element_by_xpath("//div/[1]/form/b").text[1:-1]
+

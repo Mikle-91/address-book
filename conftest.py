@@ -1,11 +1,27 @@
 # # -*- coding: utf-8 -*-
 import pytest
-from model.group import Group
 from fixture.application import Application
 
 fixture = None
 
 
+
+
+
+# @pytest.fixture(scope="session")
+# def app(request):
+#     fixture = Application()
+#     fixture.session.login(username="admin", password="secret")
+#     def fin():
+#         fixture.session.logout()
+#         fixture.destroy()
+#     request.addfinalizer(fin)
+#     return fixture
+
+
+
+
+#######
 @pytest.fixture
 def app(request):
     global fixture
