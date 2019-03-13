@@ -8,7 +8,7 @@ class Group:
         self.id = id
 
     def __repr__(self):
-        return "%s:%s" % (self.id, self.name)
+        return "%s:%s;%s;%s" % (self.id, self.name, self.header, self.footer)
 
     def __eq__(self, other): # переопределяем сравнение, для сравнения групп
         # 2 группы равны, когда у них совпадают имена и совпадают идентификаторы даже если идентификатор не определен(None)
