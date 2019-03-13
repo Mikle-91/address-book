@@ -8,7 +8,7 @@ fixture = None
 
 
 
-# @pytest.fixture(scope="session")
+# @pytest.fixture(scope="session")  #предыдущая версия фикстуры
 # def app(request):
 #     fixture = Application()
 #     fixture.session.login(username="admin", password="secret")
@@ -26,7 +26,8 @@ fixture = None
 def app(request):
     global fixture
     if fixture is None:
-        fixture = Application()
+        browser = request.config.getoption("--browser")
+        fixture = Application(browser=browser)
         fixture.session.login(username="admin", password="secret")
     else:
         if not fixture.is_valid():
@@ -42,3 +43,6 @@ def stop(request):
         fixture.destroy()
     request.addfinalizer(fin)
     return fixture
+
+def pytest_addoption(parser):
+    parser.addoption("--browser", action="store", default="firefox")
