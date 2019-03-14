@@ -4,14 +4,15 @@ from model.group import Group
 import pytest
 import random
 import string
-from data.add_group import constant as testdata
+from data.groups import testdata
 # можно заменить рандомные данные в тесте на статичные путем замены
 # from data.add_group import testdata   на
 # from data.add_group import constant as testdata
 
 
-@pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
-def test_add_group(app, group):
+
+def test_add_group(app, json_groups):
+    group = json_groups
     old_groups=app.group.get_group_list()   #проверка добавления группы - берется состояние до внесения изменений
     #group= Group(name="grIvan", header="title", footer="sometext") # group используется 2 раза, для теста и для его проверки
     app.group.create(group)
@@ -20,6 +21,16 @@ def test_add_group(app, group):
         #проверка содержания групп
     old_groups.append(group)
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max) # проверка содержания групп
+
+
+
+
+
+
+
+
+
+
 
 
 
