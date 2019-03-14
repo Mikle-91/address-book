@@ -13,7 +13,7 @@ def random_string(prefix, maxlen):  #prefix это слово перед сге�
 # первая статичная, следом 5 сгенерированных строк
 testdata = [Group(name="", header="", footer="")] + [
     Group(name=random_string("name", 10), header=random_string("header", 20), footer=random_string("footer", 20))
-    for i in range(5)
+    for i in range(2)
 ]
 
 #перебор вариантов пустых и генерированных данных
