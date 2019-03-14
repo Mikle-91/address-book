@@ -23,41 +23,51 @@ def load_config(file):
 @pytest.fixture
 def app(request):
     global fixture
+    browser = request.config.getoption("--browser")  # передаем опц значение в конструктор application
+    base_url = request.config.getoption("--baseUrl")
     if fixture is None:
-        browser = request.config.getoption("--browser")
-        fixture = Application(browser=browser)
-        fixture.session.login(username="admin", password="secret")
+        fixture = Application(browser=browser, base_url=base_url)
         #web_config = load_config(request.config.getoption("--target"))['web']
-        if fixture is None or not fixture.is_valid():
-            fixture = Application(browser=browser)
-            fixture.session.login(username="admin", password="secret")
-    # else:
-    #     if not fixture.is_valid():
-    #         fixture = Application()
-    #         fixture.session.login(username="admin", password="secret")
+    else:
+        if not fixture.is_valid(): # если фикстура сломалась, запускаем новую
+            fixture = Application(browser=browser, base_url=base_url)
+    fixture.session.ensure_login(username="admin", password="secret")
     return fixture
 
 
-@pytest.fixture(scope="session")
-def db(request):
-    db_config = load_config(request.config.getoption("--target"))['db']
-    dbfixture = DbFixture(host=db_config['host'],name=db_config['name'],user=db_config['user'], password=db_config['password'])
-    def fin():
-            dbfixture.destroy()
-    request.addfinalizer(fin)
-    return dbfixture
+# @pytest.fixture(scope="session")
+# def db(request):
+#     db_config = load_config(request.config.getoption("--target"))['db']
+#     dbfixture = DbFixture(host=db_config['host'], name=db_config['name'], user=db_config['user'], password=db_config['password'])
+#     def fin():
+#         dbfixture.destroy()
+#     request.addfinalizer(fin)
+#     return dbfixture
 
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(scope="session", autouse=True)  #scope session чтобы логаут был после прохождения всех тестов, autouse чтобы автоматом завершил сессию
+#@pytest.fixture(scope="session", autouse=True)
 def stop(request):
     def fin():
-        fixture.session.logout()
+        fixture.session.ensure_logout()
         fixture.destroy()
     request.addfinalizer(fin)
     return fixture
 
 def pytest_addoption(parser):
-    parser.addoption("--browser", action="store", default="firefox")
+    parser.addoption("--browser", action="store", default="firefox") #store значит сохранить значение параметра
+    parser.addoption("--baseUrl", action="store", default="http://localhost/addressbook/")
+
+
+
+
+
+
+
+
+
+
+
 
 
 # @pytest.fixture #без пяти меннут переделаная на половину
