@@ -16,7 +16,7 @@ class Group:
 
 
 
-    def id_or_max(self):
+    def id_or_max(self): #вспомогательная функция для сортировки элементов в списке
         if self.id:
             return int(self.id)
         else:
