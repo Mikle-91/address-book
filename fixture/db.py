@@ -11,7 +11,7 @@ class DbFixture:
         self.user = user
         self.password = password
         self.connection = mysql.connector.connect(host=host, database=name, user=user, password=password)
-
+        self.connection.autocommit = True #сбрасываем кэш бд после выполнения запроса(чтобы работали тесты сравнения после изменений объектов бд)
 
     def get_group_list(self):   #загружаем список групп из базы данных
         list=[]

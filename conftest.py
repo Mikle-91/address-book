@@ -21,7 +21,7 @@ def load_config(file): # выполняется загрузка конфигу�
 
 
 @pytest.fixture
-def app(request):
+def app(request): #через request получаем доступ к опциям
     global fixture
     global target
     browser = request.config.getoption("--browser")  # передаем опц значение в конструктор application
@@ -41,6 +41,10 @@ def db(request):
     request.addfinalizer(fin)
     return dbfixture
 
+@pytest.fixture
+def check_ui(request):
+    return request.config.getoption("--check_ui")
+
 
 @pytest.fixture(scope="session", autouse=True)  #scope session чтобы логаут был после прохождения всех тестов, autouse чтобы автоматом завершил сессию
 def stop(request):
@@ -53,6 +57,7 @@ def stop(request):
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="firefox") #store значит сохранить значение параметра
     parser.addoption("--target", action="store", default="target.json")
+    parser.addoption("--check_ui", action="store_true") #по дефолту если опция присутствует, то True, отсутствует False
 
 def pytest_generate_tests(metafunc): #metafunc позволяет получить информацию о тестовой функции, динамически подставлять значения параметров
     for fixture in metafunc.fixturenames:
