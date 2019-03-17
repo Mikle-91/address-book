@@ -5,7 +5,7 @@ from model.group import Group
 
 
 
-def test_add_group(app,db, json_groups):
+def test_add_group(app, db, json_groups):
     group = json_groups
     old_groups=db.get_group_list()   #проверка добавления группы - берется состояние до внесения изменений. Список загружается из db
     #group= Group(name="grIvan", header="title", footer="sometext") # group используется 2 раза, для теста и для его проверки
@@ -14,9 +14,6 @@ def test_add_group(app,db, json_groups):
         #проверка содержания групп
     old_groups.append(group)
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max) # проверка содержания групп
-
-
-
 
 
 

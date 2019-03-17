@@ -11,3 +11,4 @@ def test_add_contact(app):
                  fax="45", email="65@qwe.ru", email2="4", email3="45", bday="", bmonth="February", byear="1992",
                  aday="30", amonth="January", ayear="1980", new_group=None, address2="someadr", secondaryphone="49577884",
                  notes="nothing"))
+

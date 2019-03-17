@@ -1,7 +1,8 @@
 # # -*- coding: utf-8 -*-
 from model.contact import Contact
 
-def test_modify_contact_firstname(app):
+
+def test_modify_contact_firstname(app, db):
     if app.contact.count() == 0:
         app.contact.create(
             Contact(firstname="without note", middlename="pupkin", lastname="last", nickname="supernick", photo=None,
@@ -10,6 +11,10 @@ def test_modify_contact_firstname(app):
                     aday="30", amonth="January", ayear="1980", new_group=None, address2="someadr", secondaryphone="000",
                     notes="nothing"))
     app.contact.modify_first_contact(Contact(firstname="Axel"))
+
+
+    print("количество контактов " + str(len(db.get_contact_list())))
+
 
 # def test_modify_contact_middlename(app):
 #     app.contact.modify_first_contact(Contact(middlename="changed mid name4"))
