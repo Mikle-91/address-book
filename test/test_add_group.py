@@ -3,8 +3,8 @@ from sys import maxsize
 from model.group import Group
 
 
-def test_add_group(app, db, json_groups):
-    group = json_groups # читаем тестовые данные которые динамически подставил pytest_generate_tests из conftest.py
+def test_add_group(app, db, data_groups): #альтернативный вариант json_groups (вместо data_groups)
+    group = data_groups # читаем тестовые данные которые динамически подставил pytest_generate_tests из conftest.py
     old_groups=db.get_group_list()   #проверка добавления группы - берется состояние до внесения изменений. Список загружается из db
     app.group.create(group)
     new_groups = db.get_group_list()  # проверка добавления группы - берется состояние после внесения изменений
