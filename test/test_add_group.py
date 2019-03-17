@@ -3,12 +3,9 @@ from sys import maxsize
 from model.group import Group
 
 
-
-
 def test_add_group(app, db, json_groups):
-    group = json_groups
+    group = json_groups # читаем тестовые данные которые динамически подставил pytest_generate_tests из conftest.py
     old_groups=db.get_group_list()   #проверка добавления группы - берется состояние до внесения изменений. Список загружается из db
-    #group= Group(name="grIvan", header="title", footer="sometext") # group используется 2 раза, для теста и для его проверки
     app.group.create(group)
     new_groups = db.get_group_list()  # проверка добавления группы - берется состояние после внесения изменений
         #проверка содержания групп
@@ -25,11 +22,11 @@ def test_add_group(app, db, json_groups):
 
 
 
-#Ниже предыдущие версии теста:
-import pytest
-import random
-import string
-from data.groups import testdata
+#Ниже предыдущая версия теста, которая брала тестовые данные из каталога data/groups.py:
+# import pytest
+# import random
+# import string
+# from data.groups import testdata
 # можно заменить рандомные данные в тесте на статичные путем замены
 # from data.add_group import testdata   на
 # from data.add_group import constant as testdata

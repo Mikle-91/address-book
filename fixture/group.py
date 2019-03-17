@@ -6,7 +6,7 @@ class GroupHelper:
         self.app = app
 
 
-    def create(self, Group):
+    def create(self, Group):    #создание группы
         driver = self.app.driver
         self.open_groups_page()
         # init groupe creation
@@ -39,7 +39,7 @@ class GroupHelper:
             driver.find_element_by_link_text("groups").click()
 
 
-    def select_group_by_index(self, index):
+    def select_group_by_index(self, index): #выделение группы из списка кликом по чекбоксу
         driver = self.app.driver
         driver.find_elements_by_name("selected[]")[index].click()
 
@@ -66,11 +66,11 @@ class GroupHelper:
         self.return_to_groups_page()
         self.group_cache = None
 
-    def select_first_group(self):
+    def select_first_group(self): #выделение первой группы из списка
         driver = self.app.driver
         driver.find_element_by_name("selected[]").click()
 
-    def modify_first_group(self):
+    def modify_first_group(self): # редактирование первой в списке группы
         self.modify_group_by_index(0)
 
 
@@ -91,14 +91,14 @@ class GroupHelper:
         driver = self.app.driver
         driver.find_element_by_link_text("groups").click()
 
-    def count(self):
+    def count(self): # счетчик количества групп(чекбоксов) на странице
         driver = self.app.driver
         self.open_groups_page()
         return len(driver.find_elements_by_name("selected[]"))
 
     group_cache = None
 
-    def get_group_list(self):
+    def get_group_list(self): #получение списка групп на странице
         if self.group_cache is None:
             driver = self.app.driver
             self.open_groups_page()

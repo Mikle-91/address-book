@@ -42,7 +42,7 @@ def db(request):
     return dbfixture
 
 @pytest.fixture
-def check_ui(request):
+def check_ui(request): #фикстура для дополнительной проверки через UI вместо бд
     return request.config.getoption("--check_ui")
 
 
@@ -54,11 +54,13 @@ def stop(request):
     request.addfinalizer(fin)
     return fixture
 
-def pytest_addoption(parser):
+def pytest_addoption(parser): #опции для фикстуры перед запуском тестов
     parser.addoption("--browser", action="store", default="firefox") #store значит сохранить значение параметра
     parser.addoption("--target", action="store", default="target.json")
     parser.addoption("--check_ui", action="store_true") #по дефолту если опция присутствует, то True, отсутствует False
 
+#определяем формат тестовых данных по имени фикстуры. Если data_groups, то берем данные из пакета data из модудя groups.py
+# если json_groups, то берем json файл из каталога data/groups.json
 def pytest_generate_tests(metafunc): #metafunc позволяет получить информацию о тестовой функции, динамически подставлять значения параметров
     for fixture in metafunc.fixturenames:
         if fixture.startswith("data_"): #фильтруем по префиксу data_
@@ -69,10 +71,10 @@ def pytest_generate_tests(metafunc): #metafunc позволяет получит
             metafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
 
 
-def load_from_module(module):
+def load_from_module(module):   # берем тестовые данные из data/%modulname%.py из объекта testdata
     return importlib.import_module("data.%s" % module).testdata
 
-def load_from_json(file):
+def load_from_json(file): # берем тестовые данные файла из каталога data/%file%.json
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/%s.json" % file)) as f: #открываем файл с данными в json
-        return jsonpickle.decode(f.read())          #читаем из него данные и перекодируем
+        return jsonpickle.decode(f.read())          #читаем из него данные и перекодируем в исходный объект
 
