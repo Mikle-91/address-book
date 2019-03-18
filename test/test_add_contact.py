@@ -3,21 +3,15 @@ from model.contact import Contact
 
 def test_add_group(app, db, json_contacts): #альтернативный вариант data_contacts (вместо json_contact)
     contact = json_contacts
+    old_contacts = db.get_contact_list()  # проверка добавления контакта - берется состояние до внесения изменений. Список загружается из db
     app.contact.create(contact)
+    new_contact = db.get_contact_list()  # проверка добавления контакта - берется состояние после внесения изменений
+    #проверка содержания контактов
+    old_contacts.append(contact)
+    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contact, key=Contact.id_or_max) # проверка содержания групп
 
 
 
-
-
-# def test_add_group(app, db, json_groups):
-#     group = json_groups # читаем тестовые данные которые динамически подставил pytest_generate_tests из conftest.py
-#     old_groups=db.get_group_list()   #проверка добавления группы - берется состояние до внесения изменений. Список загружается из db
-#     app.group.create(group)
-#     new_groups = db.get_group_list()  # проверка добавления группы - берется состояние после внесения изменений
-#         #проверка содержания групп
-#     old_groups.append(group)
-#     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max) # проверка содержания групп
-#
 
 
 

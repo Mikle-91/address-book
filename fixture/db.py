@@ -30,13 +30,27 @@ class DbFixture:
         list=[]
         cursor = self.connection.cursor()
         try:
-            cursor.execute("select id, firstname, lastname from addressbook where deprecated='0000-00-00 00:00:00'") #выполнение запроса в базу с фильтром на актуальные данные
+            cursor.execute("select id, firstname, middlename, lastname, nickname, company, title, company, address, home, mobile, work, fax, email, email2, email3, bday, bmonth, byear, aday, amonth, ayear, address2, phone2, notes  from addressbook where deprecated='0000-00-00 00:00:00'") #выполнение запроса в базу с фильтром на актуальные данные
             for row in cursor:
-                (id, firstname, lastname) = row    #разбиваем полученный кортеж на переменные
-                list.append(Contact(id=str(id), firstname=firstname, lastname=lastname)) #передаем параметры объекту
+                (id,  firstname, middlename, lastname, nickname, company, title, company, address, home, mobile, work, fax, email, email2, email3, bday, bmonth, byear, aday, amonth, ayear, address2, phone2, notes) = row    #разбиваем полученный кортеж на переменные
+                list.append(Contact(id=str(id), firstname=firstname, middlename=middlename, lastname=lastname, nickname=nickname, title=title, company=company, address=address, homephone=home, workphone=work, fax=fax, email=email, email2=email2, email3=email3, bday=bday, bmonth=bmonth, byear=byear, aday=aday, amonth=amonth,ayear=ayear,address2=address2, secondaryphone=phone2, notes=notes )) #передаем параметры объекту
         finally:
             cursor.close()
         return list
+
+
+    #рабочий бэкап
+    # def get_contact_list(self):   #загружаем список групп из базы данных
+    #     list=[]
+    #     cursor = self.connection.cursor()
+    #     try:
+    #         cursor.execute("select id, firstname, lastname from addressbook where deprecated='0000-00-00 00:00:00'") #выполнение запроса в базу с фильтром на актуальные данные
+    #         for row in cursor:
+    #             (id, firstname, lastname) = row    #разбиваем полученный кортеж на переменные
+    #             list.append(Contact(id=str(id), firstname=firstname, lastname=lastname)) #передаем параметры объекту
+    #     finally:
+    #         cursor.close()
+    #     return list
 
 
     def destroy(self):

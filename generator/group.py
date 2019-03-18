@@ -19,7 +19,7 @@ except getopt.GetoptError as err:
     getopt.usage()
     sys.exit(2)
 
-n=1 #количество наборов данных(1 набор=1 группа)
+n=5 #количество наборов данных(1 набор=1 группа)
 f= "data/groups.json"
 
 for o, a in opts: # o - название опции, a- значение опции
