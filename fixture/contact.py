@@ -2,8 +2,11 @@ import time
 from selenium.webdriver.support.ui import Select
 from model.contact import Contact
 import re
+from selenium.common.exceptions import NoAlertPresentException
+
 
 class ContactHelper:
+
 
     def __init__(self, app):
         self.app = app
@@ -48,6 +51,45 @@ class ContactHelper:
         driver = self.app.driver
         driver.find_elements_by_name("selected[]")[index].click()
 
+
+########
+    def delete_contact_by_id(self, id):
+        driver = self.app.driver
+        self.open_home_page()
+        self.select_contact_by_id(id)
+
+        self.accept_next_alert = True
+        driver.find_element_by_xpath(
+            "(.//*[normalize-space(text()) and normalize-space(.)='Select all'])[1]/following::input[2]").click()
+        #self.open_home_page()
+        self.close_alert_and_get_its_text()
+        self.contact_cache = None
+
+    def is_alert_present(self):
+        try: self.app.driver.switch_to_alert()
+        except NoAlertPresentException as e: return False
+        return True
+
+    def close_alert_and_get_its_text(self):
+        try:
+            alert = self.app.driver.switch_to_alert()
+            alert_text = alert.text
+            if self.accept_next_alert:
+                alert.accept()
+            else:
+                alert.dismiss()
+            return alert_text
+        finally:
+            self.accept_next_alert = True
+
+    def select_contact_by_id(self, id):
+        driver = self.app.driver
+        driver.find_element_by_css_selector("input[value='%s']" % id).click()
+
+
+
+
+##################
 
     def open_home_page(self):
         driver = self.app.driver

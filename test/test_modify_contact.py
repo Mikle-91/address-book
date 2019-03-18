@@ -5,7 +5,7 @@ from random import randrange
 def test_modify_contact_firstname(app, db): #изменяем данные рандомной группы
     if app.contact.count() == 0:  # проверка наличия групп перед изменением
         app.contact.create(     #если нет ни одной группы, то создаем новую
-            Contact(firstname="without note", middlename="pupkin", lastname="last", nickname="supernick", photo=None,
+            Contact(firstname="Ivan", middlename="pupkin", lastname="last", nickname="supernick", photo=None,
                     title="sometitle", company="space", address="zeleka", homephone="5floar", mobilephone="9876", workphone="456",
                     fax="45", email="65@qwe.ru", email2="4", email3="45", bday="", bmonth="February", byear="1992",
                     aday="30", amonth="January", ayear="1980", new_group=None, address2="someadr 78", secondaryphone="000",
