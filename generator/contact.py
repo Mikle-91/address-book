@@ -19,7 +19,7 @@ except getopt.GetoptError as err:
     getopt.usage()
     sys.exit(2)
 
-n=1 #количество наборов данных(1 набор=1 группа)
+n=5 #количество наборов данных(1 набор=1 группа)
 f= "data/contacts.json"
 
 for o, a in opts: # o - название опции, a- значение опции
@@ -42,7 +42,7 @@ def random_string_phone(prefix, maxlen):
 
 #генерим месяц
 def random_month():
-    month_list = "January", "February","March", "April","May", "June","July", "August","September", "October","November", "December"
+    month_list = "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
     return random.choice(month_list)
 
 #генерим email

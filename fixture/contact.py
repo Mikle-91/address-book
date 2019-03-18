@@ -19,23 +19,35 @@ class ContactHelper:
         self.fill_contact_form_date(contact)
         # submit form
         driver.find_element_by_name("submit").click()
+        self.contact_cache = None
 
 
     def select_first_contact(self):
         driver = self.app.driver
         driver.find_element_by_name("selected[]").click()
 
-    def modify_first_contact(self, new_contact_data):
+    def modify_first_contact(self):
+        self.modify_contact_by_index(0)
+
+
+
+    def modify_contact_by_index(self, index, contact):
         driver = self.app.driver
         self.open_home_page()
-        self.select_first_contact()
         # open modification form
-        driver.find_element_by_xpath("//img[contains(@title,'Edit')]").click()
+        link= "http://localhost/addressbook/edit.php?id=" +str(contact.id)
+        driver.get(link)
         # fill contact form
-        self.fill_contact_form(new_contact_data)
+        self.fill_contact_form(contact)
         # submit modification
         driver.find_element_by_name("update").click()
         self.open_home_page()
+        self.contact_cache = None
+
+    def select_contact_by_index(self, index):  # выделение контакта из списка кликом по чекбоксу
+        driver = self.app.driver
+        driver.find_elements_by_name("selected[]")[index].click()
+
 
     def open_home_page(self):
         driver = self.app.driver
@@ -104,8 +116,9 @@ class ContactHelper:
             self.contact_cache = []
             for row in driver.find_elements_by_name("entry"):   #берем строку содержащюю данные одного контакта
                 cells = row.find_elements_by_tag_name("td")
-                firstname = cells[1].text   # в столбце 1 имя
-                lastname = cells[2].text    # в столбце 2 фамилия
+                firstname = cells[2].text   # в столбце 1 фамилия
+
+                lastname = cells[1].text    # в столбце 2 имя
                 id = cells[0].find_element_by_tag_name("input").get_attribute("value") # в столбце 0 id
                 all_phones = cells[5].text     # в столбце 5 номера телефонов контакта отображаемые в несколько строк.
                 self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id, all_phones_from_home_page=all_phones))

@@ -1,7 +1,8 @@
 # # -*- coding: utf-8 -*-
 from model.contact import Contact
 
-def test_add_group(app, db, json_contacts): #альтернативный вариант data_contacts (вместо json_contact)
+
+def test_add_contact(app, db, json_contacts): #альтернативный вариант data_contacts (вместо json_contact)
     contact = json_contacts
     old_contacts = db.get_contact_list()  # проверка добавления контакта - берется состояние до внесения изменений. Список загружается из db
     app.contact.create(contact)

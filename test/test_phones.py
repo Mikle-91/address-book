@@ -2,7 +2,7 @@ import re
 from model.contact import Contact
 
 def test_phones_on_home_page(app):
-    app.contact.modify_first_contact(Contact(firstname="Axel")) #рабочий тест из другого файла
+    
 
     contact_from_home_page = app.contact.get_contact_list()[0]  # новая проверка учитывающая незапаолненные номера
     contact_from_edit_page = app.contact.get_contact_info_from_edit_page(0)
@@ -10,6 +10,7 @@ def test_phones_on_home_page(app):
 
 def clear(s):
     return re.sub("[() -]", "",s)  # (что заменяем, на что, где) удаляем лишние символы из номеров телефонов
+
 def merge_phones_like_on_home_page(contact): # склеили список телефонов  (обратная проверка)
     return "\n".join(filter(lambda x: x != "",  #если остались пустые строки, то их тоже убираем
                              (map(lambda x: clear(x),   #убираем лишние символы

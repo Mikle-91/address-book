@@ -74,14 +74,14 @@ class GroupHelper:
         self.modify_group_by_index(0)
 
 
-    def modify_group_by_index(self, index, new_group_data):
+    def modify_group_by_index(self, index, group):
         driver = self.app.driver
         self.open_groups_page()
         self.select_group_by_index(index)
         #open modification form
         driver.find_element_by_name("edit").click()
         #fill group form
-        self.fill_group_form(new_group_data)
+        self.fill_group_form(group)
         # submit modification
         driver.find_element_by_name("update").click()
         self.return_to_groups_page()
