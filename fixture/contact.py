@@ -32,7 +32,9 @@ class ContactHelper:
     def modify_first_contact(self):
         self.modify_contact_by_index(0)
 
-
+    def open_page(self,link):
+        driver = self.app.driver
+        driver.get(link)
 
     def modify_contact_by_index(self, index, contact):
         driver = self.app.driver
@@ -51,8 +53,29 @@ class ContactHelper:
         driver = self.app.driver
         driver.find_elements_by_name("selected[]")[index].click()
 
+    def add_contact_to_group_by_index(self, index):
+        driver = self.app.driver
+        self.select_contact_by_index(index)
+        driver.find_element_by_name("add").click()
 
-########
+    def add_contact_to_group_by_name(self, group_name, id): #@@
+        driver = self.app.driver
+        self.open_home_page()
+        self.select_contact_by_id(id)
+        Select(driver.find_element_by_name("to_group")).select_by_visible_text(group_name)
+        driver.find_element_by_name("add").click()
+
+
+    def add_contact_to_group_by_id(self, id):
+        driver = self.app.driver
+        self.select_contact_by_id(id)
+        driver.find_element_by_name("add").click()
+
+    def select_contact_by_id(self, id):
+        driver = self.app.driver
+        driver.find_element_by_css_selector("input[value='%s']" % id).click()
+
+
     def delete_contact_by_id(self, id):
         driver = self.app.driver
         self.open_home_page()
@@ -86,10 +109,14 @@ class ContactHelper:
         driver = self.app.driver
         driver.find_element_by_css_selector("input[value='%s']" % id).click()
 
+    def delete_contactid_from_group(self, id):
+        driver = self.app.driver
+        self.select_contact_by_id(id)
+        driver.find_element_by_name("remove").click()
 
 
 
-##################
+
 
     def open_home_page(self):
         driver = self.app.driver

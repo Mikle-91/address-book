@@ -6,7 +6,7 @@ def test_delete_some_contact(app, db, check_ui):
     if len(db.get_contact_list()) == 0:         # проверка наличия групп перед удалением
         app.contact.create(Contact(firstname="Ivan"))
     old_contacts = db.get_contact_list()  #проверка удаления группы - берется состояние до внесения изменений
-    contact = random.choice(old_contacts)   #рандомно выбираем какую группу удалить
+    contact = random.choice(old_contacts)   #рандомно выбираем какой контакт
     app.contact.delete_contact_by_id(contact.id)    #удаляем элемент из списка и сбрасываем кэш get_contact_list
     time.sleep(0.5) # ждем сброса кэша
     new_contacts = db.get_contact_list()     #проверка удаления группы - берется состояние после внесения изменений

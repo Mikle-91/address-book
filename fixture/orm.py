@@ -59,3 +59,27 @@ class ORMFixture:
         orm_group = list(select(g for g in ORMFixture.ORMGroup if g.id == group.id))[0]
         return self.convert_contacts_to_model(
             select(c for c in ORMFixture.ORMContact if c.deprecated is None and orm_group not in c.groups))
+
+    @db_session
+    def get_contact_by_id(self, contact):
+        return self.convert_contacts_to_model(select(c for c in ORMFixture.ORMContact if c.deprecated is None and c.id==contact.id))  # deprecated is None значит отфильтровать удаленые контакты
+
+    @db_session
+    def get_groupid_from_group_by_name(self, name):
+        l = self.get_group_by_name(name)
+        l2 = str(l).split(":")
+        l3 = l2[0].replace("[", "")  # достали id группы
+        return l3
+
+    @db_session
+    def get_group_by_name(self, name):
+        return self.convert_groups_to_model(select(g for g in ORMFixture.ORMGroup if g.name == name))
+
+
+
+
+
+    #
+        # orm_group = list(select(g for g in ORMFixture.ORMGroup if g.id == group.id))[
+        #     0]  # извлекаем группу с заданным идентификатором, берем первый из списка
+        # return self.convert_contacts_to_model(orm_group.contacts)

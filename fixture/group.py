@@ -87,6 +87,7 @@ class GroupHelper:
         self.return_to_groups_page()
         self.group_cache = None
 
+
     def return_to_groups_page(self):
         driver = self.app.driver
         driver.find_element_by_link_text("groups").click()

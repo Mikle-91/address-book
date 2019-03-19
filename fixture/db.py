@@ -39,20 +39,6 @@ class DbFixture:
         return list
 
 
-    #рабочий бэкап
-    # def get_contact_list(self):   #загружаем список групп из базы данных
-    #     list=[]
-    #     cursor = self.connection.cursor()
-    #     try:
-    #         cursor.execute("select id, firstname, lastname from addressbook where deprecated='0000-00-00 00:00:00'") #выполнение запроса в базу с фильтром на актуальные данные
-    #         for row in cursor:
-    #             (id, firstname, lastname) = row    #разбиваем полученный кортеж на переменные
-    #             list.append(Contact(id=str(id), firstname=firstname, lastname=lastname)) #передаем параметры объекту
-    #     finally:
-    #         cursor.close()
-    #     return list
-
-
     def destroy(self):
         self.connection.close()
 
