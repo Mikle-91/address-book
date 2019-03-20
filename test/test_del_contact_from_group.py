@@ -2,6 +2,7 @@ from fixture.orm import ORMFixture
 from model.group import Group
 from random import randrange
 from fixture.contact import Contact
+#тест проверяет удаление принадлежности контакта группе
 
 
 def test_del_contact_from_group(app, db):

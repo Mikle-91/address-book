@@ -1,5 +1,4 @@
 # # -*- coding: utf-8 -*-
-import pytest
 import jsonpickle
 import os.path
 from model.group import Group
@@ -7,6 +6,7 @@ import random
 import string
 import getopt # для чтения командной строки
 import sys # чтобы получить доступ к этим опциям
+#файл генерирует тестовые данные в формате json для создания/редактирования групп
 #изменять длину генерируемых данных можно в "testdata =[Group(name=random_string("name", 10)"..]
 # где 10 это количество символов после слова name, а количество групп можно указать в переменной n
 # При вызове генератора через консоль, можно указать параметр-n и название файла с данными.

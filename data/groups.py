@@ -2,7 +2,7 @@ from sys import maxsize
 from model.group import Group
 import random
 import string
-
+# статичные тестовые данные для создания групп
 testdata = [
     # Group(name="name1", header="header1", footer="footer1"),
     Group(name="name2", header="header2", footer="footer2")

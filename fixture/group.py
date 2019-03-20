@@ -1,5 +1,6 @@
 from model.group import Group
 
+#методы для работы с группами
 class GroupHelper:
 
     def __init__(self, app):
@@ -23,7 +24,6 @@ class GroupHelper:
         self.change_field_value("group_name", group.name)
         self.change_field_value("group_header", group.header)
         self.change_field_value("group_footer", group.footer)
-
 
 
     def change_field_value(self, field_name, text):

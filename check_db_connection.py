@@ -1,8 +1,9 @@
 import mysql.connector
 from fixture.orm import ORMFixture
 from model.group import Group
-#connection = mysql.connector.connect(host="127.0.0.1", database="addressbook", user="root", password="")
 #отладочный файл
+#connection = mysql.connector.connect(host="127.0.0.1", database="addressbook", user="root", password="")
+
 
 db = ORMFixture(host="127.0.0.1", name="addressbook", user="root", password="")
 

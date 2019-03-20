@@ -1,6 +1,6 @@
 # # -*- coding: utf-8 -*-
 from model.contact import Contact
-
+# статичные тестовые данные для создания контакта
 
 testdata = [
     Contact(firstname="Empty contact"),

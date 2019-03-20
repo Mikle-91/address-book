@@ -4,6 +4,7 @@ import json
 import os.path
 import importlib
 import jsonpickle
+#файл создания фикстур
 
 from fixture.application import Application
 from fixture.db import DbFixture

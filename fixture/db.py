@@ -3,7 +3,7 @@ import mysql.connector
 from model.group import Group
 from model.contact import Contact
 
-
+#методы для работы с БД
 class DbFixture:
 
     def __init__(self, host, name, user, password):

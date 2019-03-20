@@ -26,7 +26,7 @@ def test_delete_some_group(app, db, check_ui):
 
 
 
-
+# предыдущая версия теста
 # def test_delete_first_group(app): # удаление первой группы в списке
 #     if app.group.count() ==0:
 #         app.group.create(Group(name="test"))

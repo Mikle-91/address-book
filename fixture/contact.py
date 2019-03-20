@@ -4,12 +4,13 @@ from model.contact import Contact
 import re
 from selenium.common.exceptions import NoAlertPresentException
 
-
+#методы для работы с контактами
 class ContactHelper:
 
 
     def __init__(self, app):
         self.app = app
+
 
     def create(self, contact):
         driver = self.app.driver
@@ -29,12 +30,15 @@ class ContactHelper:
         driver = self.app.driver
         driver.find_element_by_name("selected[]").click()
 
+
     def modify_first_contact(self):
         self.modify_contact_by_index(0)
+
 
     def open_page(self,link):
         driver = self.app.driver
         driver.get(link)
+
 
     def modify_contact_by_index(self, index, contact):
         driver = self.app.driver
@@ -53,10 +57,12 @@ class ContactHelper:
         driver = self.app.driver
         driver.find_elements_by_name("selected[]")[index].click()
 
+
     def add_contact_to_group_by_index(self, index):
         driver = self.app.driver
         self.select_contact_by_index(index)
         driver.find_element_by_name("add").click()
+
 
     def add_contact_to_group_by_name(self, group_name, id): #@@
         driver = self.app.driver
@@ -71,6 +77,7 @@ class ContactHelper:
         self.select_contact_by_id(id)
         driver.find_element_by_name("add").click()
 
+
     def select_contact_by_id(self, id):
         driver = self.app.driver
         driver.find_element_by_css_selector("input[value='%s']" % id).click()
@@ -80,18 +87,18 @@ class ContactHelper:
         driver = self.app.driver
         self.open_home_page()
         self.select_contact_by_id(id)
-
         self.accept_next_alert = True
         driver.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='Select all'])[1]/following::input[2]").click()
-        #self.open_home_page()
         self.close_alert_and_get_its_text()
         self.contact_cache = None
+
 
     def is_alert_present(self):
         try: self.app.driver.switch_to_alert()
         except NoAlertPresentException as e: return False
         return True
+
 
     def close_alert_and_get_its_text(self):
         try:
@@ -105,17 +112,16 @@ class ContactHelper:
         finally:
             self.accept_next_alert = True
 
+
     def select_contact_by_id(self, id):
         driver = self.app.driver
         driver.find_element_by_css_selector("input[value='%s']" % id).click()
+
 
     def delete_contactid_from_group(self, id):
         driver = self.app.driver
         self.select_contact_by_id(id)
         driver.find_element_by_name("remove").click()
-
-
-
 
 
     def open_home_page(self):
@@ -147,6 +153,7 @@ class ContactHelper:
         self.change_field_value("phone2", contact.secondaryphone)
         self.change_field_value("notes", contact.notes)
 
+
     def change_field_value(self, field_name, text):
         driver = self.app.driver
         if text is not None:
@@ -154,12 +161,14 @@ class ContactHelper:
             driver.find_element_by_name(field_name).clear()
             driver.find_element_by_name(field_name).send_keys(text)
 
+
     def fill_contact_form_date(self, contact): # отдельная обработка т.к. там dropdown list элементы
         driver = self.app.driver
         self.change_field_value_date("bday", contact.bday)
         self.change_field_value_date("bmonth", contact.bmonth)
         self.change_field_value_date("aday", contact.aday)
         self.change_field_value_date("amonth", contact.amonth)
+
 
     def change_field_value_date(self, field_name, text):
         driver = self.app.driver
@@ -174,8 +183,6 @@ class ContactHelper:
         return len(driver.find_elements_by_name("selected[]"))
 
 
-
-
     contact_cache = None
 
     def get_contact_list(self):     #загрузка списка контактов(имя, фамилия) из таблицы homepage
@@ -186,12 +193,12 @@ class ContactHelper:
             for row in driver.find_elements_by_name("entry"):   #берем строку содержащюю данные одного контакта
                 cells = row.find_elements_by_tag_name("td")
                 firstname = cells[2].text   # в столбце 1 фамилия
-
                 lastname = cells[1].text    # в столбце 2 имя
                 id = cells[0].find_element_by_tag_name("input").get_attribute("value") # в столбце 0 id
                 all_phones = cells[5].text     # в столбце 5 номера телефонов контакта отображаемые в несколько строк.
                 self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id, all_phones_from_home_page=all_phones))
         return list(self.contact_cache)
+
 
     def open_contact_to_edit_by_index(self, index):
         driver = self.app.driver
@@ -199,7 +206,6 @@ class ContactHelper:
         row =driver.find_elements_by_name("entry")[index]
         cell = row.find_elements_by_tag_name("td")[7]
         cell.find_element_by_tag_name("a").click()
-
 
     def open_contact_view_by_index(self,index):
         driver = self.app.driver

@@ -1,7 +1,7 @@
 from fixture.orm import ORMFixture
 from model.group import Group
 from random import randrange
-
+#тест проверяет создание принадлежности контакта группе
 
 def test_add_contact_to_group(app, db):
     if len(db.get_group_list()) == 0:           # проверка наличия групп

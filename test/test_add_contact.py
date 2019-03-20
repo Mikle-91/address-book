@@ -10,7 +10,7 @@ def test_add_contact(app, db, json_contacts): #альтернативный ва
     new_contact = db.get_contact_list()  # проверка добавления контакта - берется состояние после внесения изменений
     #проверка содержания контактов
     old_contacts.append(contact)
-    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contact, key=Contact.id_or_max) # проверка содержания групп
+    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contact, key=Contact.id_or_max) # проверка содержания контактов
 
 
 

@@ -5,6 +5,7 @@ from model.group import Group
 from model.contact import Contact
 #from pymysql.converters import decoders
 
+#ORM(Object-Relational Mapping) методы для работы с БД
 class ORMFixture:
     db = Database() # объект на основании которого делается привязка
 
@@ -75,11 +76,3 @@ class ORMFixture:
     def get_group_by_name(self, name):
         return self.convert_groups_to_model(select(g for g in ORMFixture.ORMGroup if g.name == name))
 
-
-
-
-
-    #
-        # orm_group = list(select(g for g in ORMFixture.ORMGroup if g.id == group.id))[
-        #     0]  # извлекаем группу с заданным идентификатором, берем первый из списка
-        # return self.convert_contacts_to_model(orm_group.contacts)
