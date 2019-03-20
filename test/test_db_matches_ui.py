@@ -1,5 +1,5 @@
 from model.group import Group
-from timeit import timeit
+#тест сравнивает идентичность данных из БД с данными полученными через UI
 
 def test_group_list(app, db):
     ui_list = app.group.get_group_list()   #список загруженный через ui

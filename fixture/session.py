@@ -1,3 +1,4 @@
+#методы для работы с сессией
 class SessionHelper:
 
 
